@@ -66,15 +66,24 @@ for index1, part in enumerate(paragrapheChapitre):
         mySortedList = sorted(mySortedList, reverse=True)
         print mySortedList[:10],
         with open('NoRep\\partie' + str(index1) + '_noRepeat.csv', 'wb') as csvfile:
-            cpt=1
-            for eff,mot,l in mySortedList:
-                item = [mot,str(eff),str(l),str(cpt)]
-                print>>csvfile, ";".join(item)
-                cpt+=1
-                #           monFichierCSV2 = csv.DictWriter(csvfile)
-                #           monFichierCSV2.writeheader()
-                #           for item in mySortedList:
-                #               monFichierCSV2.writerow(str(item))
+            cpt = 1
+            for eff, mot, l in mySortedList:
+                item = [mot, str(eff), str(l), str(cpt)]
+                print>> csvfile, ";".join(item)
+                cpt += 1
+        with open('NoRep\\partieTOP10_' + str(index1) + '_noRepeat.csv', 'wb') as csvfile:
+            cpt = 1
+            for eff, mot, l in mySortedList[:10]:
+                item = [mot, str(eff), str(l), str(cpt)]
+                print>> csvfile, ";".join(item)
+                cpt += 1
+        with open('NoRep\\partieTOP100_' + str(index1) + '_noRepeat.csv', 'wb') as csvfile:
+            cpt = 1
+            for eff, mot, l in mySortedList[:100]:
+                item = [mot, str(eff), str(l), str(cpt)]
+                print>> csvfile, ";".join(item)
+                cpt += 1
+
         mywords = []
 
 myRegexNoms = re.compile('[^\.\-\xe0!?] [A-Z][a-z]+ [A-Z][a-z]+|[^\.\-\xe0!?] [A-Z][a-z]+')
